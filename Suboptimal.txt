@@ -1,6 +1,3 @@
 MKS
-
-All-Anagrams
-Alphabet-Inventory
-Array-Middle
+  All
 
