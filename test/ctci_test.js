@@ -89,7 +89,7 @@ describe('One Away (Cracking the Coding Interview 1.4)', function() {
     expect(oneAway('abcd', 'aXYd')).to.be.false;
     expect(oneAway('abcdefg', 'XYcdefg')).to.be.false;
     expect(oneAway('abcdefg', 'abcdeXY')).to.be.false;
-    expect(oneAway('abcdefg', 'aXcdeYg')).to.be.false;
+    expect(oneAway('abcdefg', 'aXcYdeg')).to.be.false;
     expect(oneAway('abcdefg', 'XbcdefY')).to.be.false;
   });
 
@@ -102,7 +102,7 @@ describe('One Away (Cracking the Coding Interview 1.4)', function() {
 
   it('Should fail multiple additions', function() {
     expect(oneAway('ab', 'aXYb')).to.be.false;
-    expect(oneAway('abcd', 'aXbcYd')).to.be.false;
+    expect(oneAway('abcd', 'aXbYcd')).to.be.false;
     expect(oneAway('abcdefg', 'XYabcdefg')).to.be.false;
     expect(oneAway('abcdefg', 'abcdefgXY')).to.be.false;
     expect(oneAway('abcdefg', 'XabcdefgY')).to.be.false;
