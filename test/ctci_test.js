@@ -154,23 +154,23 @@ describe('Rotate Matrix (Cracking the Coding Interview 1.7)', function() {
   const mat3 = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
   const mat3R = [[6, 3, 0], [7, 4, 1], [8, 5, 2]];
 
-  it('Should rotate square matrices', function() {
+  it('Should rotate square matrices of n <= 3', function() {
     expect(rotateMatrix(mat1)).to.eql(mat1);
     expect(rotateMatrix(mat2)).to.eql(mat2R);
     expect(rotateMatrix(mat3)).to.eql(mat3R);
-    // expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat3))))).to.eql(mat3);
+    expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat3))))).to.eql(mat3);
   });
 
-  const mat4 = [[0, 1]];
-  const mat4R = [[0], [1]];
+  const mat4 = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]];
+  const mat4R = [[12, 8, 4, 0], [13, 9, 5, 1], [14, 10, 6, 2], [15, 11, 7, 3]]
 
-  const mat5 = [[0, 1, 2], [3, 4, 5]];
-  const mat5R = [[3, 0], [4, 1], [5, 2]];
+  // const mat5 = [[0, 1, 2], [3, 4, 5]];
+  // const mat5R = [[3, 0], [4, 1], [5, 2]];
 
-  xit('Should rotate rectangular matrices', function() {
+  it('Should rotate rectangular matrices of n > 3', function() {
     expect(rotateMatrix(mat4)).to.eql(mat4R);
     expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat4))))).to.eql(mat4);
-    expect(rotateMatrix(mat5).to.eql(mat5R));
-    expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat5))))).to.eql(mat5);
+    // expect(rotateMatrix(mat5).to.eql(mat5R));
+    // expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat5))))).to.eql(mat5);
   });
 });
