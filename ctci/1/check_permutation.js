@@ -30,7 +30,4 @@ function checkPermutation(str1, str2) {
   return true;
 }
 
-console.log(checkPermutation('asdf', 'dfas'));
-console.log(checkPermutation('asdf', 'assd'));
-console.log(checkPermutation('assdf', 'dfdas'));
-console.log(checkPermutation('assdf', 'fdas'));
+module.exports = checkPermutation;
