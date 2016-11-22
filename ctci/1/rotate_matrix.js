@@ -10,16 +10,14 @@ function rotateMatrix(mat) {
   for(let j = 0; j < Math.floor(mat.length / 2); j++) {
     const lastIndex = mat.length - 1 - j;
     for(let i = 1 + j; i < mat.length - j; i++) {
-      let temp1 = mat[i][lastIndex];  //temp1 = 22
-      mat[i][lastIndex] = mat[0][i];  //22 = 02
-      let temp2 = mat[lastIndex][lastIndex - i];  //temp2 = 20
-      mat[lastIndex][lastIndex - i] = temp1;  //20 = temp1 = 22
-      temp1 = mat[lastIndex - i][0];  //temp1 = 00
-      mat[lastIndex - i][0] = temp2;  //00 = temp2 = 20
-      mat[0][i] = temp1;  //02 = temp1 = 00
+      let temp1 = mat[i][lastIndex];
+      mat[i][lastIndex] = mat[j][i];
+      let temp2 = mat[lastIndex][lastIndex - i + j];
+      mat[lastIndex][lastIndex - i + j] = temp1;
+      temp1 = mat[lastIndex - i + j][j];
+      mat[lastIndex - i + j][j] = temp2;
+      mat[j][i] = temp1;
     }
-
-    break;
   }
 
   return mat;

@@ -146,31 +146,91 @@ describe('String Compression (Cracking the Coding Interview 1.6)', function() {
 
 describe('Rotate Matrix (Cracking the Coding Interview 1.7)', function() {
   const rotateMatrix = require('../ctci/1/rotate_matrix.js');
+
+  function generateMatrix(n) {
+    const mat = [];
+    for(let i = 0; i < n; i++) {
+      mat.push([]);
+    }
+    
+    mat.forEach(function(row, i) {
+      for(let index = 0; index < n; index++) {
+        row.push(i)
+      }
+    })
+    
+    return mat;
+  }
+
+  function deepCopy(arr) {
+    return JSON.parse(JSON.stringify(arr));
+  }
+
   const mat1 = [[0]];
 
   const mat2 = [[0, 1], [2, 3]];
   const mat2R = [[2, 0], [3, 1]];
 
   const mat3 = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
+  const mat3Copy = deepCopy(mat3);
   const mat3R = [[6, 3, 0], [7, 4, 1], [8, 5, 2]];
 
   it('Should rotate square matrices of n <= 3', function() {
     expect(rotateMatrix(mat1)).to.eql(mat1);
     expect(rotateMatrix(mat2)).to.eql(mat2R);
     expect(rotateMatrix(mat3)).to.eql(mat3R);
-    expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat3))))).to.eql(mat3);
+    expect(rotateMatrix(rotateMatrix(rotateMatrix(mat3)))).to.eql(mat3Copy);
   });
 
   const mat4 = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]];
+  const mat4Copy = deepCopy(mat4);
   const mat4R = [[12, 8, 4, 0], [13, 9, 5, 1], [14, 10, 6, 2], [15, 11, 7, 3]]
 
-  // const mat5 = [[0, 1, 2], [3, 4, 5]];
-  // const mat5R = [[3, 0], [4, 1], [5, 2]];
+  const mat9 = generateMatrix(9);
+  const mat9Copy = deepCopy(mat9);
+  const mat9R = [ 
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
+  ];
 
-  it('Should rotate rectangular matrices of n > 3', function() {
+  const mat20 = generateMatrix(20);
+  const mat20Copy = deepCopy(mat20);
+  const mat20R = [ 
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ],
+    [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
+  ];
+
+  it('Should rotate square matrices of n > 3', function() {
     expect(rotateMatrix(mat4)).to.eql(mat4R);
-    expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat4))))).to.eql(mat4);
-    // expect(rotateMatrix(mat5).to.eql(mat5R));
-    // expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat5))))).to.eql(mat5);
+    expect(rotateMatrix(rotateMatrix(rotateMatrix(mat4)))).to.eql(mat4Copy);
+    expect(rotateMatrix(mat9)).to.eql(mat9R);
+    expect(rotateMatrix(rotateMatrix(rotateMatrix(mat9)))).to.eql(mat9Copy);
+    expect(rotateMatrix(mat20)).to.eql(mat20R);
+    expect(rotateMatrix(rotateMatrix(rotateMatrix(mat20)))).to.eql(mat20Copy);
   });
 });
