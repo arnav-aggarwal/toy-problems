@@ -2,6 +2,8 @@
  * Cracking the Coding Interview: 1.4 Palindrome Permutation
  *
  * O(n)
+ *
+ * TODO: Decrease space usage by using a bit vector
  */
 
 function palindromePermutation(str) {

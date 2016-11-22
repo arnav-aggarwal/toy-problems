@@ -68,3 +68,57 @@ describe('Palindrome Permutation (Cracking the Coding Interview 1.4)', function(
       opdghjkl;wtuyiop[db nvmm,.(&^% $))])`)).to.be.true;
   });
 });
+
+describe('One Away (Cracking the Coding Interview 1.4)', function() {
+  const oneAway = require('../ctci/1/one_away.js');
+  it('Should return true for identical strings', function() {
+    expect(oneAway('', '')).to.be.true;
+    expect(oneAway('a', 'a')).to.be.true;
+    expect(oneAway('abcd', 'abcd')).to.be.true;
+  });
+
+  it('Should pass a single substitution', function() {
+    expect(oneAway('a', 'X')).to.be.true;
+    expect(oneAway('abcd', 'abXd')).to.be.true;
+    expect(oneAway('abcdefg', 'Xbcdefg')).to.be.true;
+    expect(oneAway('abcdefg', 'abcdefX')).to.be.true;
+  });
+
+  it('Should fail multiple substitutions', function() {
+    expect(oneAway('ab', 'XY')).to.be.false;
+    expect(oneAway('abcd', 'aXYd')).to.be.false;
+    expect(oneAway('abcdefg', 'XYcdefg')).to.be.false;
+    expect(oneAway('abcdefg', 'abcdeXY')).to.be.false;
+    expect(oneAway('abcdefg', 'aXcdeYg')).to.be.false;
+    expect(oneAway('abcdefg', 'XbcdefY')).to.be.false;
+  });
+
+  it('Should pass a single addition', function() {
+    expect(oneAway('', 'X')).to.be.true;
+    expect(oneAway('abcd', 'abXcd')).to.be.true;
+    expect(oneAway('abcd', 'Xabcd')).to.be.true;
+    expect(oneAway('abcd', 'abcdX')).to.be.true;
+  });
+
+  it('Should fail multiple additions', function() {
+    expect(oneAway('ab', 'aXYb')).to.be.false;
+    expect(oneAway('abcd', 'aXbcYd')).to.be.false;
+    expect(oneAway('abcdefg', 'XYabcdefg')).to.be.false;
+    expect(oneAway('abcdefg', 'abcdefgXY')).to.be.false;
+    expect(oneAway('abcdefg', 'XabcdefgY')).to.be.false;
+  });
+
+  it('Should pass a single deletion', function() {
+    expect(oneAway('X', '')).to.be.true;
+    expect(oneAway('abXc', 'abc')).to.be.true;
+    expect(oneAway('abcX', 'abc')).to.be.true;
+    expect(oneAway('Xabc', 'abc')).to.be.true;
+  });
+
+  it('Should fail multiple deletions', function() {
+    expect(oneAway('XY', '')).to.be.false;
+    expect(oneAway('aXYb', 'ab')).to.be.false;
+    expect(oneAway('abXY', 'ab')).to.be.false;
+    expect(oneAway('XYab', 'ab')).to.be.false;
+  });
+});
