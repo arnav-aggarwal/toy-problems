@@ -1,4 +1,10 @@
-function URLify(strArr, lastIndex = strArr.length - 1, replaceStart = lastIndex) {
+/**
+ * Cracking the Coding Interview: 1.3 URLify
+ *
+ * O(n)
+ */
+
+function URLify(strArr, lastIndex = strArr.length - 1, replaceStart = lastIndex, iterationsLeft) {
   if(strArr === '') {
     return '';
   }
@@ -7,6 +13,17 @@ function URLify(strArr, lastIndex = strArr.length - 1, replaceStart = lastIndex)
     strArr = strArr.split('');
   }
   
+  if(iterationsLeft === undefined) {
+    let totalSpaces = 0;
+    for(let i = 0; i < strArr.length; i++) {
+      if(strArr[i] === ' ') {
+        totalSpaces++;
+      } 
+    }
+
+    iterationsLeft = totalSpaces / 3 - 1;
+  }
+
   let charEncountered = false;
   let currentIndex;
   let charIndex;
@@ -38,8 +55,8 @@ function URLify(strArr, lastIndex = strArr.length - 1, replaceStart = lastIndex)
   strArr[index--] = '2';
   strArr[index--] = '%';
   
-  if(strArr.indexOf(' ') !== -1) {
-    return URLify(strArr, currentIndex, index);
+  if(iterationsLeft) {
+    return URLify(strArr, currentIndex, index, iterationsLeft - 1);
   }
   
   return strArr.join('');
