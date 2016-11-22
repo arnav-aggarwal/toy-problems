@@ -122,3 +122,24 @@ describe('One Away (Cracking the Coding Interview 1.4)', function() {
     expect(oneAway('XYab', 'ab')).to.be.false;
   });
 });
+
+describe('String Compression (Cracking the Coding Interview 1.5)', function() {
+  const strComp = require('../ctci/1/string_compression.js');
+  it('Should compress a string', function() {
+    expect(strComp('aaa')).to.equal('a3');
+    expect(strComp('AAA')).to.equal('A3');
+    expect(strComp('aaabb')).to.equal('a3b2');
+    expect(strComp('aaaabba')).to.equal('a4b2a1');
+    expect(strComp('aaaaBBbbabb')).to.equal('a4B2b2a1b2');
+    expect(strComp('aaAAAbbBBaaAA')).to.equal('a2A3b2B2a2A2');
+  });
+
+  it('Should return the original string if smaller or the same size', function() {
+    expect(strComp('')).to.equal('');
+    expect(strComp('a')).to.equal('a');
+    expect(strComp('aa')).to.equal('aa');
+    expect(strComp('aA')).to.equal('aA');
+    expect(strComp('aaAA')).to.equal('aaAA');
+    expect(strComp('aAaAAAbbBBaaAA')).to.equal('aAaAAAbbBBaaAA');
+  });
+});
