@@ -33,7 +33,7 @@ describe('Check Permutation (Cracking the Coding Interview 1.1)', function() {
     expect(checkPermutation('', '')).to.be.true;
     expect(checkPermutation('asdf', 'asdf')).to.be.true;
     expect(checkPermutation('asdf', 'fdas')).to.be.true;
-    
+
     expect(checkPermutation('asdf', 'aafd')).to.be.false;
     expect(checkPermutation('asdf', 'dfss')).to.be.false;
     expect(checkPermutation('asdf', 'asdfs')).to.be.false;
@@ -42,5 +42,14 @@ describe('Check Permutation (Cracking the Coding Interview 1.1)', function() {
     expect(checkPermutation('qwertyuiopasdfghjklzxcvbnm', 'mqnwbevrctxyzulikojphagsfd')).to.be.true;
     expect(checkPermutation('qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm',
       'mqnwbevrctxyzulikojphagsfdmqnwbevrctxyzulikojphagsfdmqnwbevrctxyzulikojphagsfd')).to.be.true;
+  });
+});
+
+describe('URLify (Cracking the Coding Interview 1.1)', function() {
+  const URLify = require('../ctci/1/URLify.js');
+  it('Should replace spaces with "%20"', function() {
+    expect(URLify('')).to.equal('');
+    expect(URLify('Hi there  ')).to.equal('Hi%20there');
+    expect(URLify('Hi there cutie    ')).to.equal('Hi%20there%20cutie');
   });
 });
