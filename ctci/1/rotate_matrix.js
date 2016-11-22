@@ -7,16 +7,22 @@
  */
 
 function rotateMatrix(mat) {
-  for(let j = 0; j < Math.floor(mat.length / 2); j++) {
-    const lastIndex = mat.length - 1 - j;
-    for(let i = 1 + j; i < mat.length - j; i++) {
-      let temp1 = mat[i][lastIndex];
-      mat[i][lastIndex] = mat[j][i];
-      let temp2 = mat[lastIndex][lastIndex - i + j];
-      mat[lastIndex][lastIndex - i + j] = temp1;
-      temp1 = mat[lastIndex - i + j][j];
-      mat[lastIndex - i + j][j] = temp2;
-      mat[j][i] = temp1;
+  const totalLayers = Math.floor(mat.length / 2);
+  for(let layer = 0; layer < totalLayers; layer++) {
+    const lastIndex = mat.length - 1 - layer;
+    for(let forwardIterator = layer + 1; forwardIterator < mat.length - layer; forwardIterator++) {
+      const reverseIterator = lastIndex - forwardIterator + layer;
+
+      let temp1 = mat[forwardIterator][lastIndex];
+      mat[forwardIterator][lastIndex] = mat[layer][forwardIterator];
+
+      let temp2 = mat[lastIndex][reverseIterator];
+      mat[lastIndex][reverseIterator] = temp1;
+
+      temp1 = mat[reverseIterator][layer];
+      mat[reverseIterator][layer] = temp2;
+      
+      mat[layer][forwardIterator] = temp1;
     }
   }
 
