@@ -155,9 +155,9 @@ describe('Rotate Matrix (Cracking the Coding Interview 1.7)', function() {
   const mat3R = [[6, 3, 0], [7, 4, 1], [8, 5, 2]];
 
   it('Should rotate square matrices', function() {
-    // expect(rotateMatrix(mat1)).to.eql(mat1);
+    expect(rotateMatrix(mat1)).to.eql(mat1);
     expect(rotateMatrix(mat2)).to.eql(mat2R);
-    // expect(rotateMatrix(mat3)).to.eql(mat3R);
+    expect(rotateMatrix(mat3)).to.eql(mat3R);
     // expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat3))))).to.eql(mat3);
   });
 
