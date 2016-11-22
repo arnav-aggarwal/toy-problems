@@ -7,9 +7,9 @@
  */
 
 function rotateMatrix(mat) {
-  const lastIndex = mat.length - 1;
-  for(let j = 0; j < 1; j++) {
-    for(let i = 1; i < mat.length; i++) {
+  for(let j = 0; j < Math.floor(mat.length / 2); j++) {
+    const lastIndex = mat.length - 1 - j;
+    for(let i = 1 + j; i < mat.length - j; i++) {
       let temp1 = mat[i][lastIndex];  //temp1 = 22
       mat[i][lastIndex] = mat[0][i];  //22 = 02
       let temp2 = mat[lastIndex][lastIndex - i];  //temp2 = 20
@@ -18,6 +18,8 @@ function rotateMatrix(mat) {
       mat[lastIndex - i][0] = temp2;  //00 = temp2 = 20
       mat[0][i] = temp1;  //02 = temp1 = 00
     }
+
+    break;
   }
 
   return mat;
