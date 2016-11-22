@@ -69,7 +69,7 @@ describe('Palindrome Permutation (Cracking the Coding Interview 1.4)', function(
   });
 });
 
-describe('One Away (Cracking the Coding Interview 1.4)', function() {
+describe('One Away (Cracking the Coding Interview 1.5)', function() {
   const oneAway = require('../ctci/1/one_away.js');
   it('Should return true for identical strings', function() {
     expect(oneAway('', '')).to.be.true;
@@ -123,7 +123,7 @@ describe('One Away (Cracking the Coding Interview 1.4)', function() {
   });
 });
 
-describe('String Compression (Cracking the Coding Interview 1.5)', function() {
+describe('String Compression (Cracking the Coding Interview 1.6)', function() {
   const strComp = require('../ctci/1/string_compression.js');
   it('Should compress a string', function() {
     expect(strComp('aaa')).to.equal('a3');
@@ -141,5 +141,36 @@ describe('String Compression (Cracking the Coding Interview 1.5)', function() {
     expect(strComp('aA')).to.equal('aA');
     expect(strComp('aaAA')).to.equal('aaAA');
     expect(strComp('aAaAAAbbBBaaAA')).to.equal('aAaAAAbbBBaaAA');
+  });
+});
+
+describe('Rotate Matrix (Cracking the Coding Interview 1.7)', function() {
+  const rotateMatrix = require('../ctci/1/rotate_matrix.js');
+  const mat1 = [[0]];
+
+  const mat2 = [[0, 1], [2, 3]];
+  const mat2R = [[2, 0], [3, 1]];
+
+  const mat3 = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
+  const mat3R = [[6, 3, 0], [7, 4, 1], [8, 5, 2]];
+
+  it('Should rotate square matrices', function() {
+    // expect(rotateMatrix(mat1)).to.eql(mat1);
+    expect(rotateMatrix(mat2)).to.eql(mat2R);
+    // expect(rotateMatrix(mat3)).to.eql(mat3R);
+    // expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat3))))).to.eql(mat3);
+  });
+
+  const mat4 = [[0, 1]];
+  const mat4R = [[0], [1]];
+
+  const mat5 = [[0, 1, 2], [3, 4, 5]];
+  const mat5R = [[3, 0], [4, 1], [5, 2]];
+
+  xit('Should rotate rectangular matrices', function() {
+    expect(rotateMatrix(mat4)).to.eql(mat4R);
+    expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat4))))).to.eql(mat4);
+    expect(rotateMatrix(mat5).to.eql(mat5R));
+    expect(rotateMatrix(rotateMatrix(rotateMatrix(rotateMatrix(mat5))))).to.eql(mat5);
   });
 });
