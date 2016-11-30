@@ -4,6 +4,8 @@
  * Constraints: Do in place
  *
  * O(n^2) where n is # of rows
+ *
+ * TODO: Perhaps refactor, modularize much more
  */
 
 function rotateMatrix(mat) {
@@ -21,7 +23,7 @@ function rotateMatrix(mat) {
 
       temp1 = mat[reverseIterator][layer];
       mat[reverseIterator][layer] = temp2;
-      
+
       mat[layer][forwardIterator] = temp1;
     }
   }
