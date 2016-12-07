@@ -114,5 +114,4 @@ describe('Reflecting Lasers', function() {
     expect(lasers(inf1)).to.equal(-1);
     expect(lasers(inf2)).to.equal(-1);
   });
-
 });
