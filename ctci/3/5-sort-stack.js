@@ -6,34 +6,40 @@ class Stack extends Array {
   peek() {
     return this[this.length - 1];
   }
-}
 
-function sortStack(stack) {
-  const tempStack = new Stack();
-  for(let i = 0; i < stack.length - 1; i++) { //2
-    let largest = stack.peek(); //2
-
-    for(let j = i; j < stack.length; j++) { //2
-      const thisNum = stack.pop(); //2
-
-      if(thisNum > largest) {
-        largest = thisNum;
+  isEmpty() {
+    return !this.length;
+  }
+  
+  sort() {
+    const tempStack = new Stack();
+    const len = this.length;
+    
+    for(let i = 0; i < len - 1; i++) {
+      let largest = this.peek();
+  
+      for(let j = i; j < len; j++) {
+        const thisNum = this.pop();
+  
+        if(thisNum > largest) {
+          largest = thisNum;
+        }
+  
+        tempStack.push(thisNum);
       }
-
-      tempStack.push(thisNum);
-    }
-
-    let processedLargest = false;
-    stack.push(largest);
-
-    while(tempStack.length) {
-      const thisNum = tempStack.pop();
-      if(!processedLargest && thisNum === largest) {
-        processedLargest = true;
-        continue;
+  
+      this.push(largest);
+      let processedLargest = false;
+  
+      while(!tempStack.isEmpty()) {
+        const thisNum = tempStack.pop();
+        if(!processedLargest && thisNum === largest) {
+          processedLargest = true;
+          continue;
+        }
+  
+        this.push(thisNum);
       }
-
-      stack.push(thisNum);
     }
   }
 }
