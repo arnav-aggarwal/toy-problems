@@ -43,3 +43,5 @@ class Stack extends Array {
     }
   }
 }
+
+module.exports = Stack;
